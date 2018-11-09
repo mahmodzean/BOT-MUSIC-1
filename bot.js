@@ -342,6 +342,7 @@ client.on('message', message => {
     }
 });
 
+
 client.on('ready', () => {
    console.log(`----------------`);
       console.log(`Desert Bot- Script By : EX Clan`);
@@ -352,5 +353,20 @@ client.on('ready', () => {
 client.user.setGame(`m!play |mahmod AR Music`,"http://twitch.tv/Death Shop")
 client.user.setStatus("dnd")
 });
+
+client.on('message', msg => {
+
+    if (msg.content == 'm!join') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join().then(msg.react('✅'));
+     }
+    }
+}
+})
+client.on('ready', () => { //code bot not leave room voice //Bot Is Online
+    client.channels.get("501852841678340106").join(); //by : mahmodAR
+    });
 
 client.login(process.env.BOT_TOKEN);
